@@ -107,6 +107,9 @@ scp -F ${SSH_CONFIG} -r ${HOME}/.aws/credentials ${USER}@${INSTANCE_ID}:~/.aws/c
 # copy remote setup script
 scp -F ${SSH_CONFIG} ${SCRIPT_DIR}/02_remote_setup.sh ${USER}@${INSTANCE_ID}:~/
 
+# copy test script
+scp -F ${SSH_CONFIG} ${SCRIPT_DIR}/03_create_cog.sh ${USER}@${INSTANCE_ID}:~/
+
 # setup proxy (if required), install packages & environment and import data
 if [ -n "${PROXY}" ]; then
   ssh -F ${SSH_CONFIG} ${USER}@${INSTANCE_ID} ". ./02_remote_setup.sh -p ${PROXY}"

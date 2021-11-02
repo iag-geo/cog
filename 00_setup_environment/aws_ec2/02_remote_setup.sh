@@ -51,21 +51,21 @@ echo "-------------------------------------------------------------------------"
 
 echo "y" | conda install -c conda-forge gdal rasterio[s3] rio-cogeo psycopg2 postgis shapely fiona requests boto3
 
-# remove proxy if set
-if [ -n "${PROXY}" ];
-  then
-    unset http_proxy
-    unset HTTP_PROXY
-    unset https_proxy
-    unset HTTPS_PROXY
-    unset no_proxy
-    unset NO_PROXY
-
-    echo "-------------------------------------------------------------------------"
-    echo " Proxy removed"
-    echo "-------------------------------------------------------------------------"
-    echo ""
-fi
+## remove proxy if set
+#if [ -n "${PROXY}" ];
+#  then
+#    unset http_proxy
+#    unset HTTP_PROXY
+#    unset https_proxy
+#    unset HTTPS_PROXY
+#    unset no_proxy
+#    unset NO_PROXY
+#
+#    echo "-------------------------------------------------------------------------"
+#    echo " Proxy removed"
+#    echo "-------------------------------------------------------------------------"
+#    echo ""
+#fi
 
 echo "-------------------------------------------------------------------------"
 echo " Mount storage"
@@ -109,11 +109,11 @@ mkdir -p /data/tmp/cog
 ## add PostGIS and create schema
 #psql -d geo -c "create extension if not exists postgis;"
 #psql -d geo -c "create schema if not exists cog;alter schema cog owner to \"ec2-user\";"
-
-echo "-------------------------------------------------------------------------"
-echo " Copy elevation data from S3"
-echo "-------------------------------------------------------------------------"
-
-# copy elevation files from S3
-aws s3 sync s3://bushfire-rasters/geoscience_australia/1sec-dem /data/tmp/cog/
+#
+#echo "-------------------------------------------------------------------------"
+#echo " Copy elevation data from S3"
+#echo "-------------------------------------------------------------------------"
+#
+## copy elevation files from S3
+#aws s3 sync s3://bushfire-rasters/geoscience_australia/1sec-dem /data/tmp/cog/
 #aws s3 sync s3://bushfire-rasters/nsw_dcs_spatial_services/ /data/tmp/cog/
